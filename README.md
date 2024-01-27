@@ -40,5 +40,7 @@ The BluetoothConnection smart contract is a simple Ethereum smart contract writt
 This smart contract is released under the MIT License. See the [LICENSE](./LICENSE) file for more details.
 
 ## Author 
+
 Suresh
+
 sur03esh11@gmail.com
