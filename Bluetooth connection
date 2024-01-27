@@ -1,0 +1,37 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract BluetoothConnection {
+    address public owner;
+    string private password;
+    uint8 public connectedDevices;
+
+    constructor(string memory _password) {
+        owner = msg.sender;
+        password = _password;
+        connectedDevices = 0;
+    }
+
+    function connectDevice(string memory _enteredPassword) external {
+        require(connectedDevices < 3, "Cannot connect more than 3 devices");
+
+      
+        assert(
+            keccak256(abi.encodePacked(_enteredPassword)) == keccak256(abi.encodePacked(password))
+        );
+
+        connectedDevices++;
+        assert(connectedDevices <= 3);
+    }
+
+    function changePassword(string memory _newPassword) external {
+       
+
+       
+        if (keccak256(abi.encodePacked(_newPassword)) == keccak256(abi.encodePacked(password))) {
+            revert("You can't use the same password");
+        }
+
+        password = _newPassword;
+    }
+}
